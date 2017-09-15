@@ -1,0 +1,11 @@
+---
+- name: "Send Slack notifications to '{{ slack_webhook_channel }}'"
+  slack:
+    token: "{{ slack_webhook_token }}"
+    channel: "{{ item }}"
+    msg: "{{ slack_webhook_msg }}"
+    color: "{{ slack_webhook_msg_color }}"
+  delegate_to: localhost
+  with_items:
+    - "#ansible-notifications"
+    - "{{ slack_webhook_channel }}"

@@ -1,0 +1,7 @@
+---
+slack_webhook_token: change/me/secret
+slack_webhook_channel: 
+slack_webhook_msg: 
+
+# normal, good, warning, danger
+slack_webhook_msg_color: normal
