@@ -5,6 +5,6 @@
     image: dhoer/flyway:4.2.0
     volumes:
       - "/path/to/flyway/sql:/flyway/sql"
-    command: "migrate -url={{ flyway_db_url }} -user={{ flyway_db_user }} -password={{ flyway_db_password }}"  
+    command: "migrate -url={{ flyway_db_url }} -user={{ flyway_db_user }} -password={{ flyway_db_password }} -schemas={{ flyway_db_schemas }}" 
     recreate: yes
     detach: False
