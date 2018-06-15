@@ -1,0 +1,18 @@
+# Docker
+
+This Ansible role installs :
+
+* Docker engine CE
+* Docker Compose
+
+## Configuration
+.Table Title
+|===
+| Variable | Description
+
+| `docker_insecure_registries`
+| A whitelist of insecure registries
+
+| `docker_proxy_host`
+| A list of host for Docker proxy configuration
+|===
