@@ -1,5 +1,5 @@
 
-# Created by https://www.gitignore.io/api/eclipse,ansible,intellij,visualstudio
+# Created by https://www.gitignore.io/api/eclipse,ansible,intellij+all,visualstudio
 
 ### Ansible ###
 *.retry
@@ -63,7 +63,10 @@ local.properties
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
-### Intellij ###
+# Annotation Processing
+.apt_generated
+
+### Intellij+all ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
@@ -108,22 +111,27 @@ atlassian-ide-plugin.xml
 # Cursive Clojure plugin
 .idea/replstate.xml
 
+# Ruby plugin and RubyMine
+/.rakeTasks
+
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-### Intellij Patch ###
-# Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
+### Intellij+all Patch ###
+# Ignores the whole .idea folder and all .iml files
+# See https://github.com/joeblau/gitignore.io/issues/186 and https://github.com/joeblau/gitignore.io/issues/360
 
-# *.iml
-# modules.xml
-# .idea/misc.xml
-# *.ipr
+.idea/
 
-# Sonarlint plugin
-.idea/sonarlint
+# Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-249601023
+
+*.iml
+modules.xml
+.idea/misc.xml
+*.ipr
 
 ### VisualStudio ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -393,7 +401,6 @@ paket-files/
 .fake/
 
 # JetBrains Rider
-.idea/
 *.sln.iml
 
 # CodeRush
@@ -420,5 +427,5 @@ __pycache__/
 # By default, sensitive information, such as encrypted password
 # should be stored in the .pubxml.user file.
 
-# End of https://www.gitignore.io/api/eclipse,ansible,intellij,visualstudio
 
+# End of https://www.gitignore.io/api/eclipse,ansible,intellij+all,visualstudio
