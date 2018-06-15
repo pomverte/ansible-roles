@@ -1,0 +1,54 @@
+---
+- name: update packages
+  yum:
+    name: *
+    state: latest
+
+- name: install package epel-release
+  yum:
+    name: epel-release
+
+# https://docs.docker.com/install/linux/docker-ce/centos/
+- name: remove packages
+  become: yes
+  yum:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - docker
+    - docker-client
+    - docker-client-latest
+    - docker-common
+    - docker-latest
+    - docker-latest-logrotate
+    - docker-logrotate
+    - docker-selinux
+    - docker-engine-selinux
+    - docker-engine
+
+- name: install packages
+  yum:
+    name: "{{ item }}"
+  with_items:
+    - yum-utils
+    - device-mapper-persistent-data
+    - lvm2
+
+- name: add docker-ce repo
+  yum_repository:
+    name: docker
+    description: docker-ce repo
+    baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+
+- name: install docker-ce
+  yum:
+    name: docker-ce
+
+- import_tasks: docker-config.yml
+
+- name: enable and start docker
+  become: yes
+  systemd:
+    name: docker
+    enabled: yes
+    state: started

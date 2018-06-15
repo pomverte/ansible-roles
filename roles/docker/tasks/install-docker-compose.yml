@@ -1,0 +1,9 @@
+---
+# https://docs.docker.com/compose/install/#install-compose
+- name: download binary
+  shell: curl -L https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+
+- name: set permissions
+  file:
+    src: /usr/local/bin/docker-compose
+    mode: "u=rwx,g=rx,o=rx"

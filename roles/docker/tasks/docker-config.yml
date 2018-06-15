@@ -1,0 +1,21 @@
+---
+- name: configure docker proxy
+  template:
+    src: proxy.conf
+    dest: /etc/systemd/system/docker.service.d/proxy.conf
+  when: not((docker_proxy_host is undefined) or (docker_proxy_host is none) or (docker_proxy_host | trim == ''))
+  notify: restart docker
+
+# remove file if there is no proxy configuration
+- name: remove proxy configuration if no proxy is defined
+  file:
+    path: /etc/systemd/system/docker.service.d/proxy.conf
+    state: absent
+  when: (docker_proxy_host is undefined) or (docker_proxy_host is none) or (docker_proxy_host | trim == '')
+  notify: restart docker
+
+- name: configure docker daemon
+  template:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+  notify: restart docker

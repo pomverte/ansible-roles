@@ -1,0 +1,7 @@
+---
+- import_tasks: install-centos.yml
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'RedHat'
+
+- import_tasks: configure.yml
+
+- import_tasks: install-docker-compose.yml
