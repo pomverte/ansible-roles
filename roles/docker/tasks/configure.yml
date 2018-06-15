@@ -1,5 +1,5 @@
 ---
-- name: "Log into private registry and force re-authorization"
+- name: log into private registry and force re-authorization
   docker_login:
     registry: "{{ docker_registry }}"
     username: "{{ docker_registry_user }}"
